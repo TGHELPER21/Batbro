@@ -140,7 +140,10 @@ async def txt_handler(bot: Client, m: Message):
             	params = (('url', f'{url}'),)
             	response = requests.get('https://api.classplusapp.com/cams/uploader/video/jw-signed-url', headers=headers, params=params)
             	url = response.json()['url']
-            
+              
+            elif 'cpvod' in url :
+              url = f'https://extractbot.onrender.com/classplus?link={url}'
+              
             elif '/master.mpd' in url:
              id =  url.split("/")[-2]
              url =  "https://d26g5bnklkwsh4.cloudfront.net/" + id + "/master.m3u8"
